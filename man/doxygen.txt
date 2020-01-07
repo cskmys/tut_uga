@@ -1,0 +1,13 @@
+install: graphviz, doxygen-gui
+vs-code ext:Doxygen Documentation Generator
+
+On top of function, variable, macro, enum type "/**" and Press enter to get doxygen style comment block
+
+sudo run: doxywizard
+
+1st time: choose all the params(use next to navigate across all options) and save cfg file: Doxyfile
+otherwise: choose the Doxyfile and check for the paths and use next to go till the end
+
+Run Doxygen
+
+NOTE: Doxyfile should be archived in git
