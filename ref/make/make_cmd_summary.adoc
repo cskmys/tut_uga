@@ -1,0 +1,94 @@
+= Nachos compilation summary
+
+== OS Side(Native)
+=== /media/sf_prj/src/nachos/code/bin
+* coff2noff
+** compilation: gcc
+*** flags: -g  -Wall -Wshadow -Werror -m32 -c  -o
+*** includes: ../bin, ../threads, ../filesys, ../machine
+*** macro: -
+*** files: coff2noff.c
+** linking: gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine  -m32 ... -o: coff2noff
+
+=== /media/sf_prj/src/nachos/code/build:
+* nachos-threads
+** compilation: g++
+*** flags: -g  -Wall -Wshadow -Werror -m32 -c  -o
+*** includes: ../machine, ../threads
+*** macro: CHANGED, THREADS, HOST_i386, LINUX
+*** files:
+**** ../machine: interrupt.cc, stats.cc, sysdep.cc, timer.cc
+**** ../threads: list.cc, main.cc, scheduler.cc, synch.cc, synchlist.cc, system.cc, thread.cc, threadtest.cc, utility.cc, switch.S
+** linking: g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 ... -o: nachos-threads
+
+* nachos-userprog
+** compilation: g++  
+*** flags: -g  -Wall -Wshadow -Werror  -m32 -c  -o
+*** includes: ../bin, ../filesys, ../machine, ../threads, ../userprog
+*** macro: CHANGED, FILESYS_NEEDED, FILESYS_STUB, USER_PROGRAM, HOST_i386, LINUX
+*** files:
+**** ../machine: console.cc, interrupt.cc, machine.cc, mipssim.cc, stats.cc, sysdep.cc, timer.cc, translate.cc
+**** ../threads: list.cc, main.cc, scheduler.cc, synch.cc, synchlist.cc, system.cc, thread.cc, threadtest.cc, utility.cc, switch.S
+**** ../userprog: addrspace.cc, bitmap.cc, exception.cc, progtest.cc
+** linking: g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 ... -o: nachos-userprog
+
+* nachos-filesys
+** compilation: g++     :
+*** flags: -g  -Wall -Wshadow -Werror -m32 -c -o  
+*** includes: ../bin, ../filesys, ../machine, ../threads, ../userprog
+*** macro: CHANGED, FILESYS_NEEDED, FILESYS, USER_PROGRAM, HOST_i386, LINUX
+*** files:
+**** ../filesys: directory.cc, filehdr.cc, filesys.cc, fstest.cc, openfile.cc, synchdisk.cc
+**** ../machine: console.cc, disk.cc, interrupt.cc, machine.cc, mipssim.cc, stats.cc, sysdep.cc, timer.cc, translate.cc
+**** ../threads: list.cc, main.cc, scheduler.cc, synch.cc, synchlist.cc, system.cc, thread.cc, threadtest.cc, utility.cc, switch.S
+**** ../userprog: addrspace.cc, bitmap.cc, exception.cc, progtest.cc
+** linking: g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 ... -o: nachos-filesys
+
+* nachos-network
+** compilation: g++
+*** flags: -g  -Wall -Wshadow -Werror   -m32 -c  -o
+*** includes: ../bin, ../filesys, ../machine, ../network, ../threads, ../userprog
+*** macro: CHANGED, FILESYS_NEEDED, FILESYS, NETWORK, THREADS, USER_PROGRAM, HOST_i386, LINUX
+*** files:
+**** ../filesys: directory.cc, filehdr.cc, filesys.cc, fstest.cc, openfile.cc, synchdisk.cc
+**** ../machine: console.cc, disk.cc, interrupt.cc, machine.cc, mipssim.cc, network.cc, stats.cc, sysdep.cc, timer.cc, translate.cc
+**** ../network: nettest.cc, post.cc
+**** ../threads: synch.cc, list.cc, main.cc, scheduler.cc, synchlist.cc, system.cc, thread.cc, threadtest.cc, utility.cc, switch.S
+**** ../userprog: addrspace.cc, bitmap.cc, exception.cc, progtest.cc
+** linking: g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 ... -o: nachos-network
+
+* nachos-vm
+** compilation: g++ 
+*** flags: -g  -Wall -Wshadow -Werror   -m32 -c  -o
+*** includes: ../bin, ../filesys, ../machine, ../threads, ../userprog
+*** macro: CHANGED, FILESYS_NEEDED, FILESYS_STUB, USER_PROGRAM, USE_TLB, HOST_i386, LINUX
+*** files:
+**** ../machine: console.cc, interrupt.cc, machine.cc, mipssim.cc, stats.cc, sysdep.cc, timer.cc, translate.cc
+**** ../threads: list.cc, main.cc, scheduler.cc, synch.cc, synchlist.cc, system.cc, thread.cc, threadtest.cc, utility.cc, switch.S
+**** ../userprog: addrspace.cc, bitmap.cc, exception.cc, progtest.cc
+** linking: g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 ... -o: nachos-vm
+
+== User program Side(Cross)
+/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o halt.o ../test/halt.c
+/usr/bin/mipsel-linux-gnu-gcc -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o start.o ../test/start.S
+
+make -C ../bin TARGET=HOST coff2noff
+make[2]: Entering directory '/media/sf_prj/src/nachos/code/bin'
+compilation: gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine -m32 -c  -o:
+coff2noff.c
+linking: gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine  -m32 ... -o coff2noff
+
+make[2]: Leaving directory '/media/sf_prj/src/nachos/code/bin'
+/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,elf32-tradlittlemips  start.o halt.o   -o halt.coff
+/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,ecoff-littlemips  start.o halt.o   -o halt.coff
+/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o matmult.o ../test/matmult.c
+/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,elf32-tradlittlemips  start.o matmult.o   -o matmult.coff
+/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,ecoff-littlemips  start.o matmult.o   -o matmult.coff
+/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o shell.o ../test/shell.c
+/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,elf32-tradlittlemips  start.o shell.o   -o shell.coff
+/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,ecoff-littlemips  start.o shell.o   -o shell.coff
+/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o sort.o ../test/sort.c
+/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,elf32-tradlittlemips  start.o sort.o   -o sort.coff
+/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,ecoff-littlemips  start.o sort.o   -o sort.coff
+
+rm halt.coff shell.coff matmult.coff sort.coff

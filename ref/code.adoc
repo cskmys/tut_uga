@@ -1,0 +1,17 @@
+* entry point of OS is threads/main.cc
+
+* Files to read first:
+** threads/main.cc
+** threads/thread.cc
+** threads/thread.h
+
+* Question to ponder upon:
+* How is kernel thread created?
+* Where does stack and registers for Kernel thread come from?
+* What role do the data structure allocated by: 
++
+----
+currentThread = new Thread("main")
+----
+play?
+* Can subsequent kernel threads be created in same way?

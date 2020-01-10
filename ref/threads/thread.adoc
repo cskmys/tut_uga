@@ -1,0 +1,226 @@
+= Thread
+
+== Includes
+* machine.h & addrspace.h included only on __USER_PROGRAM__
+
+== Macros, Enums
+* MachinStateSize -> 18 i,e, Nb Context register
+* StackSize -> 4KB
++
+[WARNING]
+====
+StackSize not big enough and needs to be tweaked
+====
+* ThreadStatus:
+** Created
+** Running
+** Ready
+** Blocked
+
+== Attributes
+* Usual:
+** Ptrs to base and Top of stack
++
+[NOTE]
+====
+Top could point to empty address in the array
+====
+** machineState[18] -> all registers
+** Thread name
+** Thread status
+* On __USER_PROGRAM__:
+** 40 user registers
+** Addrspace where thread is running user code 
+
+== Members
+
+=== Regular
+
+Thread(const char *threadName)::
+* Normal
+** name
+** stack and stackTop = NULL
+** status = Just created
+* On __USER_PROGRAM__
+** address space = NULL
+** all userRegisters[] = 0
+
+~Thread()::
++
+[NOTE]
+====
+Threads are created using 'new' operator, therefore, this destructor is scope agnostic and hence, this can be invoked only via 'delete' 
+
+Therefore, a different thread(current thread) has to do delete an already finished thread
+====
+* Assertion:
++
+[WARNING]
+====
+Thread not deleting itself.
+
+Very good example of usage of 'this' pointer.
+====
+* Deallocate the memory allocated for stack(refer DeallocBoundedArray in machine/sysdep)
+
+void setStatus (ThreadStatus st)::
+* Setter
+
+const char *getName ()::
+* Getter
+
+void Print ()::
+* print thread name
+
+void StackAllocate (VoidFunctionPtr func, int arg)::
+* allocate stack(refer AllocBoundedArray in sysdep) to hold StackSize number of ints i,e, no of bytes allocated = (StackSize * 4)
++
+[NOTE]
+====
+Even though our machine is 64-bit, the code is compiled as i386 i,e, 32-bit for both native and cross comp code. Hence, sizeof(int) in this project is 4 bytes
+====
+* assign it's base to attr 'stack'
+* stackTop points to base address of last element
++
+[NOTE]
+====
+Here in i386 arch stack goes from high address to low address, this will have following implications:
+
+* you will see stack growing from 'stackTop' to 'stack'.
+* For push, stackTop is decremented by 4 bytes and int value is written at that address
+* For pop, stackTop is incremented by 4 bytes
+* overflow: addr < stack
+* underflow: addr > stackTop
+
+Since push decrements by 4 bytes before writing value, we can simply let stackTop to point to end of the array i,e,
+----
+stackTop = baseAdrrStack + nbBytesInStack
+----
+Hence, by pointing at base address of last element, last 4 bytes are wasted. But, anyways, it's wasted('used') 'just to be safe'(as mentioned in comments) from underflow
+====
++
+[IMPORTANT]
+====
+The code written is:
+----
+stackTop = stack + StackSize - 4
+----
+In general, 
+----
+lastEleAddr = baseAddr + (nbEle * eleSiz) - eleSiz
+----
+Hence, here it should have been:
+----
+stackTop = stack + (StackSize * sizeof(int)) - sizeof(int)
+----
+Maybe this bug could explain why a "very big" value was needed for stack (as indicate by the comment) even though by default 16KB(StackSize * sizeof(int) = 4KB * 4) was allocated for it.
+====
+* let stack have 'n' elements(0 -> n-1), now: 
+** stackTop = base of (n-1)th element. 
+** stackTop is decremented to point to (n-2)th element 
+** stackTop(n-2th ele) = threadRoot(see switch.S for more info on threadRoot)
+** stack(0th ele) = STACK_FENCEPOST(0xdeadbeef)
++
+[NOTE]
+====
+STACK_FENCEPOST magic number is used to detect overflow 
+====
+* Set following registers:
++
+.Register and Value loaded
+[width="100%",options="header"]
+|====================
+| Reg | Val/Ptr | Comment
+| PCState | ThreadRoot(fPtr) | routine to start a thread for the first time
+| StartupPCState | SetupThreadState(fPtr) | Routine to call when thread is started
+| InitialPCState | func(fPtr) | Procedure to be loaded into PC to run the thread
+| InitialArgState | arg | single argument to thread
+| DonePCState | ThreadFinish(fPtr) | Routine to call when thread returns 
+|====================
+
+
+void Fork (VoidFunctionPtr func, int arg)::
+* allocate stack
+* On __USER_PROGRAM__
+** assign the space of new thread with current thread's space
+* Store current interrupt state and Turn off interrupt 
+* Put the newly created thread in ready state(scheduler->ReadyToRun)
+* restore interrupt state
+
+
+void SetupThreadState ()::
+* if there's a thread that has finished and not yet cleaned up, delete it
+* On __USER_PROGRAM__
+** If currentThread has an address space:
++
+[WARNING]
+====
+Have no idea what's happening here
+====
+*** RestoreUserState
+*** RestoreState of space
+* Enable Interrupt(refer Enable in machine/interrupt)
+
+static void ThreadFinish ()::
+* thread->Finish()
+
+void Finish ()::
+* turn off(disable) interrupt(interrupt->SetLevel in machine/interrupt)
+* Assertions:
++
+[WARNING]
+====
+* This function should be called by current thread
+* All previously finished threads are destroyed
+====
+* mark current thread as the thread to be destroyed(so that in new thread's SetupThreadState method this can be cleaned up)
+* *Sleep*(thread->Sleep() not unix syscall sleep)
+
+void Sleep ()::
+* Assertions:
++
+[WARNING]
+====
+* This function should be called by current thread
+* Interrupts are disabled
+====
+* mark currentThread status as blocked
+* As long as scheduler has no other threads to run:
+** Idle(refer interrupt->idle in machin/interrupt)
+* When scheduler has a thread to *Run*, let it run it
+
+void Yield ()::
+* Store interrupt's current state and Disable interrupt
+* Assertion:
++
+[WARNING]
+====
+this function is called by current thread
+====
+* Check with scheduler to find something to run next(refer scheduler->FindNextToRun in threads/scheduler) and if there's something to run next:
+** put the current thread to ready state(refer scheduler->ReadyToRun in threads/scheduler)
+** run the next thread(refer scheduler->Run in threads/scheduler)
++
+[NOTE]
+====
+If there's nothing to run, currentThread is not put in ready state, it just continues to run as usual after restoring state of interrupt in next step
+====
+* Restore state of interrupt before disabling
+
+void CheckOverflow ()::
+* Assertion:
++
+[WARNING]
+====
+0th element of stack, should contain the magic number i,e, *STACK_FENCEPOST*
+====
+
+void ThreadPrint (int arg)::
+Print thread name
+
+=== On __USER_PROGRAM__
+void SaveUserState ()::
+* Copy all the 40 machine registers to userRegister[40] (refer machine->ReadRegister in machine/machine)
+
+void RestoreUserState ()::
+* Copy all the userRegister[40] to 40 machine registers(refer machine->WriteRegister in machine/machine)

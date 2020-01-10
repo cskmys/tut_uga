@@ -1,0 +1,38 @@
+* listElement
+** ListElement (void *itemPtr, long long sortKey)
+** Attr
+*** void* item -> ptr
+*** long long key -> priority/value
+
+
+* List: single linked list of listElement
+** List(): NULL listElement
+** Prepend(void *item): Add before current first
+** Append(void *item): Add after current last
+** Remove: Delete current first element of list
+** Mapcar(VoidFunctionPtr func): Iterate through all the elements of list and pass each of the element to the function given by func ptr
+** IsEmpty
+** SortedInsert (void *item, long long sortKey): based on the key, look where to insert the item in the list
++
+[NOTE]
+====
+In *Prepend* and *Append*, key is taken as 0 by default.
+In *SortedInsert* we have option to provide a key.
+
+Seems bit weird, eh!!!
+====
++
+[WARNING]
+====
+Doing *Append* after *SortedInsert* can make list not sorted anymore.
+
+Watchout for this case in code.
+====
+** void *SortedRemove (long long *keyPtr): Remove(delete) the first listElement in the list and give its key to the function that called it via the keyPtr argument and return the ptr to the element(not listElement) that was removed from the list.
++
+[NOTE]
+====
+Name seems bit weird!!! Could have just named *removeFirst* instead of *SortedRemove*.
+Comments say it's needed for interrupts, lets see.
+====
+** ~List(): do *Remove* until list is NULL

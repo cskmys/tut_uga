@@ -1,0 +1,112 @@
+= switch
+
+Assembly code
+
+== General
+void ThreadRoot(void)::
++
+[WARNING]
+====
+This function expects following initialization to be already done:
+
+.Expected Register initialization
+[width="100%",options="header"]
+|====================
+| Register | Value expected to be loaded 
+| eax | points to startup function (interrupt enable)
+| edx | contains inital argument to thread function
+| esi | points to thread function
+| edi | point to Thread::Finish()
+|====================
+====
+
+
+== MIPS proc
+
+void ThreadRoot(void)::
+* clear frame pointer
+* execute *StartupPC* => thread->SetupThreadState
+* move *InitialArg* to argument registers => a0(arg reg) = arg
+* call the thread procedure => func(arg)
+* after thread returns, call *WhenDonePC* => thread->finish()
+
+void SWITCH( thread *t1, thread *t2 )::
++
+[NOTE]
+====
+registers involved:
+
+* sp: stack pointer
+* s0-s7: GPR(General Purpose Reg)???
+* fp: frame pointer
+* ra: return address
+====
+* save all registers of old thread to stack
+* load all registers of new thread from stack
+* call return address of new thread
++
+[NOTE]
+====
+Because of this instruction, even though you come into switch from a thread, you return from switch into new thread
+====
+
+== i386 proc
+
+void ThreadRoot(void)::
++
+[NOTE]
+====
+The expected initialization is done during *AllocateStack* in threads/thread
+====
+* Store the stack frame of the calling function on the stack
++
+----
+pushl %ebp
+----
++
+[NOTE]
+====
+%ebp is the "base pointer" for stack frame. It's the pointer used by the C runtime to access local variables and parameters on the stack.
+====
+* Takes the current stack pointer and uses it as the frame for the called function
++
+----
+movl %esp, %ebp
+----
+* leave room for local variables
++
+----
+subl $16, %esp
+----
++
+[NOTE]
+====
+Now function is ready for business. 
+
+Any references with a -ve offset from the %ebp% register are local variables.
+
+Any references with a +ve offset from the %ebp% register are parameters passed in to function
+====
+
+* execute *StartupPC* => thread->SetupThreadState
+* move *InitialArg* to argument registers => a0(arg reg) = arg
+* call the thread procedure => func(arg)
+* after thread returns, call *WhenDonePC* => thread->finish()
+
+void SWITCH( thread *t1, thread *t2 )::
++
+[NOTE]
+====
+registers involved:
+* e()x where () = a-d
+* esi, edi
+* ebp, esp
+====
+* save all registers of old thread to stack
+* load all registers of new thread from stack
+* execute ret
++
+[NOTE]
+====
+Since PC now has address of new thread, the function returns to new thread
+====

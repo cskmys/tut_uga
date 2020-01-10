@@ -1,0 +1,208 @@
+= PendingInterrupt
+
+== Attr
+* funcPtr -> handler
+* arg -> param
+* time -> when should it be executed
+* type -> timer/disk/console read/console write/nw send/nw recv
+
+== Methods
+PendingInterrupt(VoidFunctionPtr func, int param, long long time, IntType kind)::
+No checks, just one to one copy
+
+= Interrupt
+
+== Attr
+* IntStatus level: Interrupt enabled/disabled
+* List *pending: Queue of pending interrupts
+* bool inHandler: Current code is ISR or not
+* bool yieldOnReturn: True if context switch is done after return from ISR
+* MachineStatus status: Idle, (non-Idle:) user mode, kernel mode
+
+== Methods
+Interrupt()::
+default states:
+* Interrupt disabled
+* create pending list
+* code executed is not ISR
+* no context switch now
+* Kernel mode(machine starts in kernel mode)
+
+~Interrupt()::
+* destroy all the elements in pending queue
+* destroy pending queue
+
+void ChangeLevel(IntStatus old, IntStatus now)::
++
+[NOTE]
+====
+In real processor, enabling and disabling of interrupts is a costly operation. Here, since it's just a flag, we are doing it at almost zero cost.
+====
+* Setter
+* Debug Print both old and new state
+
+IntStatus SetLevel(IntStatus now)::
+* Restrictions
++
+[WARNING]
+====
+Trying to set interrupt state to On via this api in ISR will cause OS abort
+====
+* Use Setter *ChangeLevel* & return the old state
+* If Off to On transition:
+** do *OneTick*
+
+void Enable()::
+* SetLevel(On)
+
+void OneTick()::
+* do tick statistics update
++
+[NOTE]
+====
+Based on mode, update the respective mode tick and system tick in *Statistics* class
+
+* Kernel Mode: system tick and kernel mode tick += 10
+* User Mode: system tick and user mode tick += 1
+
+These different values try to emulate the fact that getting into ISR from kernel mode(during syscall etc) is more expensive than an interrupt in user program
+====
+
+* disable interrupts directly by using setter *ChangeLevel* 
++
+[NOTE]
+====
+instead of *SetLevel* to set directly *ChangeLevel* is used since *OneTick* can be called by *SetLevel* and if that's the case, we have recursion. Better to avoid recursions.  
+====
+
+* Complete executing all pending interrupts(*CheckIfDue*)
+* re-enable interrupts directly by using setter *ChangeLevel*
++
+[WARNING]
+====
+If same is done via *SetLevel* here, we would have abort. *SetLevel* is meant to be at places other than *OneTick* function.
+====
+* If current thread has to be Yielded:
+** set machine to Kernel Mode
+** Yield current thread(read thread.cc.adoc)
+** after yielding, set machine status back to whatever it was before chaning to Kernel Mode here
+
+bool CheckIfDue(bool advanceClock)::
+* Assertion
++
+[WARNING]
+====
+Interrupts must be disabled
+====
+* Nothing exits In pending interrupt queue:
+** return FALSE
++
+[NOTE]
+====
+Here TRUE/FALSE indicates if an interuppt was serviced or not
+====
+* else:
+** (First) Interrupt in queue, need to be executed in future not now(Time of excution of interrupt > current time)
++
+[NOTE]
+====
+In OS time is measured via ticks. Here totalTicks information in stats used to know current 'time'.
+====
+*** If advanceClock set to FALSE:
++
+[NOTE]
+====
+Need to see where this function is called with this argument set and reset???
+====
+**** return FALSE
+*** else:
+**** Advance the time to the time of execution of the interrupt
++
+[NOTE]
+====
+This is achieved by adding a value to 'totalTicks' such that 'totalTicks' == when(time of execution of interrupt).
+During this "advancement" of time, effectively nothing is done, hence, the 'idleTicks' counter is increased by the same value.
+====
+** (First)Interrupt needs to be executed now:
++
+[NOTE]
+====
+Advancing time will bring it here without having to return from function call and come back again
+====
+*** If system = Idle Mode & pending interrupt = timer Interrupt & other than this there's no more interrupt in queue:
+**** since current timer interrupt is removed from queue, insert another timer interrupt into queue for execution during next tick
+**** return FALSE
+*** If machine exists and system = User Mode
++
+[WARNING]
+====
+This sub-section exists only if USER_PROGRAM macro is defined
+====
+**** Machine Delayed Load???(Refer mipsim.cc.adoc in machine directory)
+*** Execute an interrupt:
++
+[NOTE]
+====
+In this code base, a piece of code executed between setting and resetting of flag *inHandler* is the interrupt service routine i,e, in entry of this subsection, flag was set and at exit of this subsection, it will be reset
+====
+**** execution function via fptr and by passing it's arguments
+*** delete the interrupt that we just executed from queue
+*** return TRUE
+
+void Idle()::
+* check if there's any pending interrupt and if it exists execute it by advancing time
++
+[NOTE]
+====
+Here time is advanced to make sure that atleast one hardware interrupt is serviced immediately ( remaining ones in queue would normally be just timer interrupt if control has come to idle???)
+====
+* No interrupt executed(i,e, no interrupts existed in 1st place):
++
+[WARNING]
+====
+There must always be atleast timer interrupt(you can see that we intentionally put timer interrupt everytime timer interrupt is being serviced in *CheckIfDue*) in the queue that gets executed on this call. If even that doesn't exist, then nothing to do. So an appropriate thing to do would be to halt the machine.
+====
+** *Halt*
+* else:
+** check if there's anymore pending interrupt and if it exists execute all of them without advancing time
++
+[NOTE]
+====
+Here time is not advanced because it could put system in busy wait kind of condition where we keep removing and inserting timer interrupts in queue inside *CheckIfDue*
+====
+** no yield since there's nothing in queue
+** machine state = system mode
+
+void Halt()::
+* Print stats
+* Cleanup(go to system.cc in threads folder)
+
+void YieldOnReturn()::
+* Assertion:
++
+[WARNING]
+====
+To be called only inside the ISR i,e, when inHandler = TRUE
+====
+* yieldOnReturn = TRUE
+
+static void PrintPending(int arg)::
+* arg -> pointer to PendingInterrupt which is typecasted as int and passed here.
+* Print the PendingInterrupt element's type and when
+
+void Schedule(VoidFunctionPtr handler, int arg, long long fromNow, IntType type)::
+* when = current totalTick + after how many ticks from now
+* create a PendingInterrupt
+* Assertion:
++
+[WARNING]
+====
+'fromNow': number of ticks from now after which interrupt should be scheduled > 0 
+====
++
+[NOTE]
+====
+Assertion done after creating interrupt and printing debug info about it. If it was done as 1st step, we would not know, which pending interrupt had a bad 'fromNow' value.
+Smart move!
+====
+* add newly create pending interrupt to pending queue

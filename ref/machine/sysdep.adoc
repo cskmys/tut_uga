@@ -1,0 +1,44 @@
+= sysdep
+
+All the apis here are the wrappers to the apis of the base OS on which nachos is running
+
+void Exit(int exitCode)::
+Unix exit(exitCode)
+
+char *AllocBoundedArray(int size)::
+* allocate (2 * pagesize) + size bytes on heap
+* Now consider memory allocated as shown in figure below and apply *PROT_NONE* protection to page before and after the stack:
++
+----
+  |<-Pg Siz->|<-Siz->|<-Pg Siz->|
+  +----------+-------+----------+
+  |          |       |          |
+  |[Protect] |[Stack]|[Protect] |
+  |          |       |          |
+  +----------+-------+----------+
+             ^
+             |
+Stack Base --+
+----
++
+[NOTE]
+====
+Doing this will cause segfault(to whole nachos) on both stack underflow and overflow 
+====
+* return Stack Base address shown in the figure
+
+void DeallocBoundedArray(char *ptr, int size)::
+* From stack base consider the memory as shown in figure below and remove the protection applied during allocation to page before and after stack by setting their access permissions to read, write and executable (*PROT_READ* | *PROT_WRITE* | *PROT_EXEC*):
++
+----
+  |<-Pg Siz->|<-Siz->|<-Pg Siz->|
+  +----------+-------+----------+
+  |          |       |          |
+  | [UnProt] |[Stack]| [UnProt] |
+  |          |       |          |
+  +----------+-------+----------+
+             ^
+             |
+Stack Base --+
+----
+* deallocate the whole [(2 * PgSiz) + Siz] bytes of memory by doing delete at the base of the whole arrangement i,e, (Stack Base i,e, ptr - PgSiz)

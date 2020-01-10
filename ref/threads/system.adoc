@@ -1,0 +1,25 @@
+void Initialize (int argc, char **argv)::
+* Parse all flags and configure flags for os and debug options
+* Initialize debug
+* create objects:
+** stats <- Statistics() (stats.cc in machine)
+** interrupt <- Interrupt() (interrupt.cc in machine)
+
+void Cleanup()::
+* delete the following objects if they are declared during conditional compilation
+** Conditionally compiled
++
+.Object and their conditional compilation flag
+[width="100%",options="header"]
+|====================
+| Object name | Macro required to compile
+| postOffice | __NETWORK__
+| machine | __USER_PROGRAM__ 
+| fileSystem | __FILESYS_NEEDED__
+| synchDisk | __FILESYS__ 
+|====================
+** Always compiled:
+*** timer
+*** scheduler
+*** interrupt
+* Exit(0)(goto sysdep.cc in machine folder)

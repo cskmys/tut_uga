@@ -1,0 +1,19 @@
+= Members
+
+int ReadRegister(int num)::
+* Assertion:
++
+[WARNING]
+====
+Number of register should be within range[0,39]
+====
+* Return registers[num]
+
+void WriteRegister(int num, int value)::
+* Assertion:
++
+[WARNING]
+====
+Number of register should be within range[0,39]
+====
+* set registers[num] = value

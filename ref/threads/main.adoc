@@ -1,0 +1,18 @@
+= main
+
+bootstrap code to initialize nachos kernel data structures and start user program
+
+Conditional compilation:
+.Programs and their conditional compilation flags
+[width="100%",options="header"]
+|====================
+| Program | Flags  
+| nachos-threads | __THREADS__
+| nachos-userprog | __FILESYS_NEEDED__, __FILESYS_STUB__, __USER_PROGRAM__
+| nachos-filesys | __FILESYS_NEEDED__, __FILESYS__, __USER_PROGRAM__
+| nachos-network | __FILESYS_NEEDED__, __FILESYS__, __NETWORK__, __THREADS__, __USER_PROGRAM__
+| nachos-vm | __FILESYS_NEEDED__, __FILESYS_STUB__, __USER_PROGRAM__, __USE_TLB__
+|====================
+
+int main (int argc, char **argv)::
+* *Initialize*(system.cc in threads) the os using the command line arguments

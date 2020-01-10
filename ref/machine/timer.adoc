@@ -1,0 +1,34 @@
+= Timer
+
+== Attr
+* radomize flag to see if prog is started with randomize option or not
+* handler -> ISR for timer interrupt
+* arg
+
+== Methods
+
+Timer(VoidFunctionPtr timerHandler, int callArg, bool doRandom)::
+* copy arguments
+* interrupt->Schedule *TimerHandler* at *TimerOfNextInterrupt*
+
+~Timer()::
+Nothing
+
+int TimeOfNextInterrupt()::
++
+[NOTE]
+====
+TimerTicks -> 100 therefore timer interrupts are called every 100 ticks.
+Here return value + Current SystemTick = when for timer interrupt execution
+====
+* if randomize enable:
+** return (1 + random number in range[0, 2 * TimerTicks])
+* else:
+** return TimerTicks
+
+static void TimerHandler(int arg)::
+* ( (Timer*)(arg) )->TimerExpired();
+
+void TimerExpired()::
+* Schedule TimerHandler again
+* Invoke timerhandler with it's arguments

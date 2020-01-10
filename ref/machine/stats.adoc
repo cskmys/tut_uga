@@ -1,0 +1,34 @@
+= Stats
+
+To keep track of time(ticks) and other parameters
+
+
+== Attr
+* ticks
+** totalTicks
+** idleTicks
+** systemTicks
+** userTicks
+* disk
+** nb reads
+** nb writes
+* console
+** nb char read
+** nb char write
+* nb Page faults
+* network
+** packets sent
+** packets recv
+
+[NOTE]
+====
+Not all attributes are incremented by same delta. Example: User level inst tick is increment by 1 but System level is by 10. If user inst, then total tick += 1 but for system level inst, total tick += 10
+====
+
+== Methods
+
+Statistics()::
+* All Attr = 0
+
+void Print()::
+* Printf all attr

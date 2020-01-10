@@ -1,0 +1,547 @@
+csk@mknachos:~$ cd /media/sf_prj/src/nachos/code/
+csk@mknachos:/media/sf_prj/src/nachos/code$ make -n
+make -C bin
+make[1]: Entering directory '/media/sf_prj/src/nachos/code/bin'
+mkdir -p ./
+echo "  [HOST CC] coff2noff.o      (coff2noff.c)";gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine -m32 -c  -o coff2noff.o coff2noff.c
+gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine -m32 -MM coff2noff.c >  .coff2noff.d
+cp  .coff2noff.d  .coff2noff.dd && sed <  .coff2noff.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .coff2noff.d && rm  .coff2noff.dd
+echo "  [HOST LINK CXX] coff2noff      (coff2noff.o)";gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine  -m32 coff2noff.o   -o coff2noff
+# LDLIBS & LOADLIBES are predefined variables 
+# LDLIBS: Library flags or names given to compilers when they are supposed to invoke the linker, ld.
+# LOADLIBES is a deprecated (but still supported) alternative to LDLIBS
+# @echo "  [HOST LINK CXX] coff2noff      (coff2noff.o)";gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine  -m32 coff2noff.o   -o coff2noff
+make[1]: Leaving directory '/media/sf_prj/src/nachos/code/bin'
+# make -C bin -> like before, but here build is the directory rather than command above since -C is specified 
+make -C build 
+make[1]: Entering directory '/media/sf_prj/src/nachos/code/build'
+mkdir -p ./
+echo "  [HOST CXX]       threads-interrupt.o      (../machine/interrupt.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-interrupt.o ../machine/interrupt.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../machine/interrupt.cc >  .threads-interrupt.d
+cp  .threads-interrupt.d  .threads-interrupt.dd && sed <  .threads-interrupt.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-interrupt.d && rm  .threads-interrupt.dd
+mkdir -p ./
+echo "  [HOST CXX]       threads-list.o      (../threads/list.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-list.o ../threads/list.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/list.cc >  .threads-list.d
+cp  .threads-list.d  .threads-list.dd && sed <  .threads-list.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-list.d && rm  .threads-list.dd
+mkdir -p ./
+echo "  [HOST CXX]       threads-main.o      (../threads/main.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-main.o ../threads/main.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/main.cc >  .threads-main.d
+cp  .threads-main.d  .threads-main.dd && sed <  .threads-main.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-main.d && rm  .threads-main.dd
+mkdir -p ./
+echo "  [HOST CXX]       threads-scheduler.o      (../threads/scheduler.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-scheduler.o ../threads/scheduler.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/scheduler.cc >  .threads-scheduler.d
+cp  .threads-scheduler.d  .threads-scheduler.dd && sed <  .threads-scheduler.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-scheduler.d && rm  .threads-scheduler.dd
+mkdir -p ./
+echo "  [HOST CXX]       threads-stats.o      (../machine/stats.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-stats.o ../machine/stats.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../machine/stats.cc >  .threads-stats.d
+cp  .threads-stats.d  .threads-stats.dd && sed <  .threads-stats.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-stats.d && rm  .threads-stats.dd                                                                                                                         
+mkdir -p ./                                                                                                                                                                                                                                                                    
+echo "  [HOST CXX]       threads-synch.o      (../threads/synch.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-synch.o ../threads/synch.cc                                                      
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/synch.cc >  .threads-synch.d                                                                                                                          
+cp  .threads-synch.d  .threads-synch.dd && sed <  .threads-synch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-synch.d && rm  .threads-synch.dd                                                                                                                         
+mkdir -p ./                                                                                                                                                                                                                                                                    
+echo "  [HOST CXX]       threads-synchlist.o      (../threads/synchlist.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-synchlist.o ../threads/synchlist.cc                                      
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/synchlist.cc >  .threads-synchlist.d                                                                                                                  
+cp  .threads-synchlist.d  .threads-synchlist.dd && sed <  .threads-synchlist.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-synchlist.d && rm  .threads-synchlist.dd                                                                                                     
+mkdir -p ./                                                                                                                                                                                                                                                                    
+echo "  [HOST CXX]       threads-sysdep.o      (../machine/sysdep.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-sysdep.o ../machine/sysdep.cc                                                  
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../machine/sysdep.cc >  .threads-sysdep.d                                                                                                                        
+cp  .threads-sysdep.d  .threads-sysdep.dd && sed <  .threads-sysdep.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-sysdep.d && rm  .threads-sysdep.dd                                                                                                                    
+mkdir -p ./                                                                                                                                                                                                                                                                    
+echo "  [HOST CXX]       threads-system.o      (../threads/system.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-system.o ../threads/system.cc                                                  
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/system.cc >  .threads-system.d                                                                                                                        
+cp  .threads-system.d  .threads-system.dd && sed <  .threads-system.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-system.d && rm  .threads-system.dd                                                                                                                    
+mkdir -p ./                                                                                                                                                                                                                                                                    
+echo "  [HOST CXX]       threads-thread.o      (../threads/thread.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-thread.o ../threads/thread.cc                                                  
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/thread.cc >  .threads-thread.d                                                                                                                        
+cp  .threads-thread.d  .threads-thread.dd && sed <  .threads-thread.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-thread.d && rm  .threads-thread.dd                                                                                                                    
+mkdir -p ./
+echo "  [HOST CXX]       threads-threadtest.o      (../threads/threadtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-threadtest.o ../threads/threadtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/threadtest.cc >  .threads-threadtest.d
+cp  .threads-threadtest.d  .threads-threadtest.dd && sed <  .threads-threadtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-threadtest.d && rm  .threads-threadtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       threads-timer.o      (../machine/timer.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-timer.o ../machine/timer.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../machine/timer.cc >  .threads-timer.d
+cp  .threads-timer.d  .threads-timer.dd && sed <  .threads-timer.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-timer.d && rm  .threads-timer.dd
+mkdir -p ./
+echo "  [HOST CXX]       threads-utility.o      (../threads/utility.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-utility.o ../threads/utility.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/utility.cc >  .threads-utility.d
+cp  .threads-utility.d  .threads-utility.dd && sed <  .threads-utility.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-utility.d && rm  .threads-utility.dd
+mkdir -p ./
+echo "  [HOST AS]  threads-switch.o      (../threads/switch.S)";gcc  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -c  -o threads-switch.o ../threads/switch.S
+gcc  -Wall -Wshadow -Werror  -DCHANGED -I../machine -I../threads  -DTHREADS   -DHOST_i386 -DLINUX -m32 -MM ../threads/switch.S >  .threads-switch.d
+cp  .threads-switch.d  .threads-switch.dd && sed <  .threads-switch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .threads-switch.d && rm  .threads-switch.dd
+echo "  [HOST LINK CXX] nachos-threads      (threads-interrupt.o threads-list.o threads-main.o threads-scheduler.o threads-stats.o threads-synch.o threads-synchlist.o threads-sysdep.o threads-system.o threads-thread.o threads-threadtest.o threads-timer.o threads-utility.o threads-switch.o)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 threads-interrupt.o threads-list.o threads-main.o threads-scheduler.o threads-stats.o threads-synch.o threads-synchlist.o threads-sysdep.o threads-system.o threads-thread.o threads-threadtest.o threads-timer.o threads-utility.o threads-switch.o   -o nachos-threads
+mkdir -p ./
+echo "  [HOST CXX]       userprog-addrspace.o      (../userprog/addrspace.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-addrspace.o ../userprog/addrspace.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/addrspace.cc >  .userprog-addrspace.d
+cp  .userprog-addrspace.d  .userprog-addrspace.dd && sed <  .userprog-addrspace.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-addrspace.d && rm  .userprog-addrspace.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-bitmap.o      (../userprog/bitmap.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-bitmap.o ../userprog/bitmap.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/bitmap.cc >  .userprog-bitmap.d
+cp  .userprog-bitmap.d  .userprog-bitmap.dd && sed <  .userprog-bitmap.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-bitmap.d && rm  .userprog-bitmap.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-console.o      (../machine/console.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-console.o ../machine/console.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/console.cc >  .userprog-console.d
+cp  .userprog-console.d  .userprog-console.dd && sed <  .userprog-console.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-console.d && rm  .userprog-console.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-exception.o      (../userprog/exception.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-exception.o ../userprog/exception.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/exception.cc >  .userprog-exception.d
+cp  .userprog-exception.d  .userprog-exception.dd && sed <  .userprog-exception.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-exception.d && rm  .userprog-exception.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-interrupt.o      (../machine/interrupt.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-interrupt.o ../machine/interrupt.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/interrupt.cc >  .userprog-interrupt.d
+cp  .userprog-interrupt.d  .userprog-interrupt.dd && sed <  .userprog-interrupt.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-interrupt.d && rm  .userprog-interrupt.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-list.o      (../threads/list.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-list.o ../threads/list.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/list.cc >  .userprog-list.d
+cp  .userprog-list.d  .userprog-list.dd && sed <  .userprog-list.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-list.d && rm  .userprog-list.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-machine.o      (../machine/machine.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-machine.o ../machine/machine.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/machine.cc >  .userprog-machine.d
+cp  .userprog-machine.d  .userprog-machine.dd && sed <  .userprog-machine.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-machine.d && rm  .userprog-machine.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-main.o      (../threads/main.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-main.o ../threads/main.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/main.cc >  .userprog-main.d
+cp  .userprog-main.d  .userprog-main.dd && sed <  .userprog-main.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-main.d && rm  .userprog-main.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-mipssim.o      (../machine/mipssim.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-mipssim.o ../machine/mipssim.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/mipssim.cc >  .userprog-mipssim.d
+cp  .userprog-mipssim.d  .userprog-mipssim.dd && sed <  .userprog-mipssim.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-mipssim.d && rm  .userprog-mipssim.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-progtest.o      (../userprog/progtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-progtest.o ../userprog/progtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/progtest.cc >  .userprog-progtest.d
+cp  .userprog-progtest.d  .userprog-progtest.dd && sed <  .userprog-progtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-progtest.d && rm  .userprog-progtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-scheduler.o      (../threads/scheduler.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-scheduler.o ../threads/scheduler.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/scheduler.cc >  .userprog-scheduler.d
+cp  .userprog-scheduler.d  .userprog-scheduler.dd && sed <  .userprog-scheduler.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-scheduler.d && rm  .userprog-scheduler.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-stats.o      (../machine/stats.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-stats.o ../machine/stats.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/stats.cc >  .userprog-stats.d
+cp  .userprog-stats.d  .userprog-stats.dd && sed <  .userprog-stats.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-stats.d && rm  .userprog-stats.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-synch.o      (../threads/synch.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-synch.o ../threads/synch.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/synch.cc >  .userprog-synch.d
+cp  .userprog-synch.d  .userprog-synch.dd && sed <  .userprog-synch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-synch.d && rm  .userprog-synch.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-synchlist.o      (../threads/synchlist.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-synchlist.o ../threads/synchlist.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/synchlist.cc >  .userprog-synchlist.d
+cp  .userprog-synchlist.d  .userprog-synchlist.dd && sed <  .userprog-synchlist.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-synchlist.d && rm  .userprog-synchlist.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-sysdep.o      (../machine/sysdep.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-sysdep.o ../machine/sysdep.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/sysdep.cc >  .userprog-sysdep.d
+cp  .userprog-sysdep.d  .userprog-sysdep.dd && sed <  .userprog-sysdep.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-sysdep.d && rm  .userprog-sysdep.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-system.o      (../threads/system.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-system.o ../threads/system.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/system.cc >  .userprog-system.d
+cp  .userprog-system.d  .userprog-system.dd && sed <  .userprog-system.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-system.d && rm  .userprog-system.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-thread.o      (../threads/thread.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-thread.o ../threads/thread.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/thread.cc >  .userprog-thread.d
+cp  .userprog-thread.d  .userprog-thread.dd && sed <  .userprog-thread.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-thread.d && rm  .userprog-thread.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-threadtest.o      (../threads/threadtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-threadtest.o ../threads/threadtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/threadtest.cc >  .userprog-threadtest.d
+cp  .userprog-threadtest.d  .userprog-threadtest.dd && sed <  .userprog-threadtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-threadtest.d && rm  .userprog-threadtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-timer.o      (../machine/timer.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-timer.o ../machine/timer.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/timer.cc >  .userprog-timer.d
+cp  .userprog-timer.d  .userprog-timer.dd && sed <  .userprog-timer.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-timer.d && rm  .userprog-timer.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-translate.o      (../machine/translate.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-translate.o ../machine/translate.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/translate.cc >  .userprog-translate.d
+cp  .userprog-translate.d  .userprog-translate.dd && sed <  .userprog-translate.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-translate.d && rm  .userprog-translate.dd
+mkdir -p ./
+echo "  [HOST CXX]       userprog-utility.o      (../threads/utility.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-utility.o ../threads/utility.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/utility.cc >  .userprog-utility.d
+cp  .userprog-utility.d  .userprog-utility.dd && sed <  .userprog-utility.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-utility.d && rm  .userprog-utility.dd
+mkdir -p ./
+echo "  [HOST AS]  userprog-switch.o      (../threads/switch.S)";gcc  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o userprog-switch.o ../threads/switch.S
+gcc  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/switch.S >  .userprog-switch.d
+cp  .userprog-switch.d  .userprog-switch.dd && sed <  .userprog-switch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .userprog-switch.d && rm  .userprog-switch.dd
+echo "  [HOST LINK CXX] nachos-userprog      (userprog-addrspace.o userprog-bitmap.o userprog-console.o userprog-exception.o userprog-interrupt.o userprog-list.o userprog-machine.o userprog-main.o userprog-mipssim.o userprog-progtest.o userprog-scheduler.o userprog-stats.o userprog-synch.o userprog-synchlist.o userprog-sysdep.o userprog-system.o userprog-thread.o userprog-threadtest.o userprog-timer.o userprog-translate.o userprog-utility.o userprog-switch.o)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 userprog-addrspace.o userprog-bitmap.o userprog-console.o userprog-exception.o userprog-interrupt.o userprog-list.o userprog-machine.o userprog-main.o userprog-mipssim.o userprog-progtest.o userprog-scheduler.o userprog-stats.o userprog-synch.o userprog-synchlist.o userprog-sysdep.o userprog-system.o userprog-thread.o userprog-threadtest.o userprog-timer.o userprog-translate.o userprog-utility.o userprog-switch.o   -o nachos-userprog
+mkdir -p ./
+echo "  [HOST CXX]       filesys-addrspace.o      (../userprog/addrspace.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-addrspace.o ../userprog/addrspace.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/addrspace.cc >  .filesys-addrspace.d
+cp  .filesys-addrspace.d  .filesys-addrspace.dd && sed <  .filesys-addrspace.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-addrspace.d && rm  .filesys-addrspace.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-bitmap.o      (../userprog/bitmap.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-bitmap.o ../userprog/bitmap.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/bitmap.cc >  .filesys-bitmap.d
+cp  .filesys-bitmap.d  .filesys-bitmap.dd && sed <  .filesys-bitmap.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-bitmap.d && rm  .filesys-bitmap.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-console.o      (../machine/console.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-console.o ../machine/console.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/console.cc >  .filesys-console.d
+cp  .filesys-console.d  .filesys-console.dd && sed <  .filesys-console.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-console.d && rm  .filesys-console.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-directory.o      (../filesys/directory.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-directory.o ../filesys/directory.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/directory.cc >  .filesys-directory.d
+cp  .filesys-directory.d  .filesys-directory.dd && sed <  .filesys-directory.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-directory.d && rm  .filesys-directory.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-disk.o      (../machine/disk.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-disk.o ../machine/disk.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/disk.cc >  .filesys-disk.d
+cp  .filesys-disk.d  .filesys-disk.dd && sed <  .filesys-disk.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-disk.d && rm  .filesys-disk.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-exception.o      (../userprog/exception.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-exception.o ../userprog/exception.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/exception.cc >  .filesys-exception.d
+cp  .filesys-exception.d  .filesys-exception.dd && sed <  .filesys-exception.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-exception.d && rm  .filesys-exception.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-filehdr.o      (../filesys/filehdr.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-filehdr.o ../filesys/filehdr.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/filehdr.cc >  .filesys-filehdr.d
+cp  .filesys-filehdr.d  .filesys-filehdr.dd && sed <  .filesys-filehdr.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-filehdr.d && rm  .filesys-filehdr.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-filesys.o      (../filesys/filesys.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-filesys.o ../filesys/filesys.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/filesys.cc >  .filesys-filesys.d
+cp  .filesys-filesys.d  .filesys-filesys.dd && sed <  .filesys-filesys.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-filesys.d && rm  .filesys-filesys.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-fstest.o      (../filesys/fstest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-fstest.o ../filesys/fstest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/fstest.cc >  .filesys-fstest.d
+cp  .filesys-fstest.d  .filesys-fstest.dd && sed <  .filesys-fstest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-fstest.d && rm  .filesys-fstest.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-interrupt.o      (../machine/interrupt.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-interrupt.o ../machine/interrupt.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/interrupt.cc >  .filesys-interrupt.d
+cp  .filesys-interrupt.d  .filesys-interrupt.dd && sed <  .filesys-interrupt.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-interrupt.d && rm  .filesys-interrupt.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-list.o      (../threads/list.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-list.o ../threads/list.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/list.cc >  .filesys-list.d
+cp  .filesys-list.d  .filesys-list.dd && sed <  .filesys-list.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-list.d && rm  .filesys-list.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-machine.o      (../machine/machine.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-machine.o ../machine/machine.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/machine.cc >  .filesys-machine.d
+cp  .filesys-machine.d  .filesys-machine.dd && sed <  .filesys-machine.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-machine.d && rm  .filesys-machine.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-main.o      (../threads/main.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-main.o ../threads/main.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/main.cc >  .filesys-main.d
+cp  .filesys-main.d  .filesys-main.dd && sed <  .filesys-main.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-main.d && rm  .filesys-main.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-mipssim.o      (../machine/mipssim.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-mipssim.o ../machine/mipssim.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/mipssim.cc >  .filesys-mipssim.d
+cp  .filesys-mipssim.d  .filesys-mipssim.dd && sed <  .filesys-mipssim.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-mipssim.d && rm  .filesys-mipssim.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-openfile.o      (../filesys/openfile.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-openfile.o ../filesys/openfile.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/openfile.cc >  .filesys-openfile.d
+cp  .filesys-openfile.d  .filesys-openfile.dd && sed <  .filesys-openfile.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-openfile.d && rm  .filesys-openfile.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-progtest.o      (../userprog/progtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-progtest.o ../userprog/progtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/progtest.cc >  .filesys-progtest.d
+cp  .filesys-progtest.d  .filesys-progtest.dd && sed <  .filesys-progtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-progtest.d && rm  .filesys-progtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-scheduler.o      (../threads/scheduler.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-scheduler.o ../threads/scheduler.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/scheduler.cc >  .filesys-scheduler.d
+cp  .filesys-scheduler.d  .filesys-scheduler.dd && sed <  .filesys-scheduler.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-scheduler.d && rm  .filesys-scheduler.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-stats.o      (../machine/stats.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-stats.o ../machine/stats.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/stats.cc >  .filesys-stats.d
+cp  .filesys-stats.d  .filesys-stats.dd && sed <  .filesys-stats.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-stats.d && rm  .filesys-stats.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-synch.o      (../threads/synch.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-synch.o ../threads/synch.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/synch.cc >  .filesys-synch.d
+cp  .filesys-synch.d  .filesys-synch.dd && sed <  .filesys-synch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-synch.d && rm  .filesys-synch.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-synchdisk.o      (../filesys/synchdisk.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-synchdisk.o ../filesys/synchdisk.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/synchdisk.cc >  .filesys-synchdisk.d
+cp  .filesys-synchdisk.d  .filesys-synchdisk.dd && sed <  .filesys-synchdisk.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-synchdisk.d && rm  .filesys-synchdisk.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-synchlist.o      (../threads/synchlist.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-synchlist.o ../threads/synchlist.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/synchlist.cc >  .filesys-synchlist.d
+cp  .filesys-synchlist.d  .filesys-synchlist.dd && sed <  .filesys-synchlist.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-synchlist.d && rm  .filesys-synchlist.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-sysdep.o      (../machine/sysdep.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-sysdep.o ../machine/sysdep.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/sysdep.cc >  .filesys-sysdep.d
+cp  .filesys-sysdep.d  .filesys-sysdep.dd && sed <  .filesys-sysdep.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-sysdep.d && rm  .filesys-sysdep.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-system.o      (../threads/system.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-system.o ../threads/system.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/system.cc >  .filesys-system.d
+cp  .filesys-system.d  .filesys-system.dd && sed <  .filesys-system.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-system.d && rm  .filesys-system.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-thread.o      (../threads/thread.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-thread.o ../threads/thread.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/thread.cc >  .filesys-thread.d
+cp  .filesys-thread.d  .filesys-thread.dd && sed <  .filesys-thread.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-thread.d && rm  .filesys-thread.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-threadtest.o      (../threads/threadtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-threadtest.o ../threads/threadtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/threadtest.cc >  .filesys-threadtest.d
+cp  .filesys-threadtest.d  .filesys-threadtest.dd && sed <  .filesys-threadtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-threadtest.d && rm  .filesys-threadtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-timer.o      (../machine/timer.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-timer.o ../machine/timer.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/timer.cc >  .filesys-timer.d
+cp  .filesys-timer.d  .filesys-timer.dd && sed <  .filesys-timer.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-timer.d && rm  .filesys-timer.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-translate.o      (../machine/translate.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-translate.o ../machine/translate.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/translate.cc >  .filesys-translate.d
+cp  .filesys-translate.d  .filesys-translate.dd && sed <  .filesys-translate.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-translate.d && rm  .filesys-translate.dd
+mkdir -p ./
+echo "  [HOST CXX]       filesys-utility.o      (../threads/utility.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-utility.o ../threads/utility.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/utility.cc >  .filesys-utility.d
+cp  .filesys-utility.d  .filesys-utility.dd && sed <  .filesys-utility.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-utility.d && rm  .filesys-utility.dd
+mkdir -p ./
+echo "  [HOST AS]  filesys-switch.o      (../threads/switch.S)";gcc  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o filesys-switch.o ../threads/switch.S
+gcc  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/switch.S >  .filesys-switch.d
+cp  .filesys-switch.d  .filesys-switch.dd && sed <  .filesys-switch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .filesys-switch.d && rm  .filesys-switch.dd
+echo "  [HOST LINK CXX] nachos-filesys      (filesys-addrspace.o filesys-bitmap.o filesys-console.o filesys-directory.o filesys-disk.o filesys-exception.o filesys-filehdr.o filesys-filesys.o filesys-fstest.o filesys-interrupt.o filesys-list.o filesys-machine.o filesys-main.o filesys-mipssim.o filesys-openfile.o filesys-progtest.o filesys-scheduler.o filesys-stats.o filesys-synch.o filesys-synchdisk.o filesys-synchlist.o filesys-sysdep.o filesys-system.o filesys-thread.o filesys-threadtest.o filesys-timer.o filesys-translate.o filesys-utility.o filesys-switch.o)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 filesys-addrspace.o filesys-bitmap.o filesys-console.o filesys-directory.o filesys-disk.o filesys-exception.o filesys-filehdr.o filesys-filesys.o filesys-fstest.o filesys-interrupt.o filesys-list.o filesys-machine.o filesys-main.o filesys-mipssim.o filesys-openfile.o filesys-progtest.o filesys-scheduler.o filesys-stats.o filesys-synch.o filesys-synchdisk.o filesys-synchlist.o filesys-sysdep.o filesys-system.o filesys-thread.o filesys-threadtest.o filesys-timer.o filesys-translate.o filesys-utility.o filesys-switch.o   -o nachos-filesys
+mkdir -p ./
+echo "  [HOST CXX]       network-addrspace.o      (../userprog/addrspace.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-addrspace.o ../userprog/addrspace.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/addrspace.cc >  .network-addrspace.d
+cp  .network-addrspace.d  .network-addrspace.dd && sed <  .network-addrspace.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-addrspace.d && rm  .network-addrspace.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-bitmap.o      (../userprog/bitmap.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-bitmap.o ../userprog/bitmap.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/bitmap.cc >  .network-bitmap.d
+cp  .network-bitmap.d  .network-bitmap.dd && sed <  .network-bitmap.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-bitmap.d && rm  .network-bitmap.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-console.o      (../machine/console.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-console.o ../machine/console.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/console.cc >  .network-console.d
+cp  .network-console.d  .network-console.dd && sed <  .network-console.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-console.d && rm  .network-console.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-directory.o      (../filesys/directory.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-directory.o ../filesys/directory.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/directory.cc >  .network-directory.d
+cp  .network-directory.d  .network-directory.dd && sed <  .network-directory.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-directory.d && rm  .network-directory.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-disk.o      (../machine/disk.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-disk.o ../machine/disk.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/disk.cc >  .network-disk.d
+cp  .network-disk.d  .network-disk.dd && sed <  .network-disk.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-disk.d && rm  .network-disk.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-exception.o      (../userprog/exception.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-exception.o ../userprog/exception.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/exception.cc >  .network-exception.d
+cp  .network-exception.d  .network-exception.dd && sed <  .network-exception.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-exception.d && rm  .network-exception.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-filehdr.o      (../filesys/filehdr.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-filehdr.o ../filesys/filehdr.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/filehdr.cc >  .network-filehdr.d
+cp  .network-filehdr.d  .network-filehdr.dd && sed <  .network-filehdr.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-filehdr.d && rm  .network-filehdr.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-filesys.o      (../filesys/filesys.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-filesys.o ../filesys/filesys.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/filesys.cc >  .network-filesys.d
+cp  .network-filesys.d  .network-filesys.dd && sed <  .network-filesys.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-filesys.d && rm  .network-filesys.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-fstest.o      (../filesys/fstest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-fstest.o ../filesys/fstest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/fstest.cc >  .network-fstest.d
+cp  .network-fstest.d  .network-fstest.dd && sed <  .network-fstest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-fstest.d && rm  .network-fstest.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-interrupt.o      (../machine/interrupt.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-interrupt.o ../machine/interrupt.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/interrupt.cc >  .network-interrupt.d
+cp  .network-interrupt.d  .network-interrupt.dd && sed <  .network-interrupt.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-interrupt.d && rm  .network-interrupt.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-list.o      (../threads/list.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-list.o ../threads/list.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/list.cc >  .network-list.d
+cp  .network-list.d  .network-list.dd && sed <  .network-list.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-list.d && rm  .network-list.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-machine.o      (../machine/machine.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-machine.o ../machine/machine.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/machine.cc >  .network-machine.d
+cp  .network-machine.d  .network-machine.dd && sed <  .network-machine.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-machine.d && rm  .network-machine.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-main.o      (../threads/main.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-main.o ../threads/main.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/main.cc >  .network-main.d
+cp  .network-main.d  .network-main.dd && sed <  .network-main.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-main.d && rm  .network-main.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-mipssim.o      (../machine/mipssim.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-mipssim.o ../machine/mipssim.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/mipssim.cc >  .network-mipssim.d
+cp  .network-mipssim.d  .network-mipssim.dd && sed <  .network-mipssim.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-mipssim.d && rm  .network-mipssim.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-nettest.o      (../network/nettest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-nettest.o ../network/nettest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../network/nettest.cc >  .network-nettest.d
+cp  .network-nettest.d  .network-nettest.dd && sed <  .network-nettest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-nettest.d && rm  .network-nettest.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-network.o      (../machine/network.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-network.o ../machine/network.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/network.cc >  .network-network.d
+cp  .network-network.d  .network-network.dd && sed <  .network-network.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-network.d && rm  .network-network.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-openfile.o      (../filesys/openfile.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-openfile.o ../filesys/openfile.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/openfile.cc >  .network-openfile.d
+cp  .network-openfile.d  .network-openfile.dd && sed <  .network-openfile.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-openfile.d && rm  .network-openfile.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-post.o      (../network/post.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-post.o ../network/post.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../network/post.cc >  .network-post.d
+cp  .network-post.d  .network-post.dd && sed <  .network-post.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-post.d && rm  .network-post.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-progtest.o      (../userprog/progtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-progtest.o ../userprog/progtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../userprog/progtest.cc >  .network-progtest.d
+cp  .network-progtest.d  .network-progtest.dd && sed <  .network-progtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-progtest.d && rm  .network-progtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-scheduler.o      (../threads/scheduler.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-scheduler.o ../threads/scheduler.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/scheduler.cc >  .network-scheduler.d
+cp  .network-scheduler.d  .network-scheduler.dd && sed <  .network-scheduler.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-scheduler.d && rm  .network-scheduler.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-stats.o      (../machine/stats.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-stats.o ../machine/stats.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/stats.cc >  .network-stats.d
+cp  .network-stats.d  .network-stats.dd && sed <  .network-stats.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-stats.d && rm  .network-stats.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-synch.o      (../threads/synch.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-synch.o ../threads/synch.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/synch.cc >  .network-synch.d
+cp  .network-synch.d  .network-synch.dd && sed <  .network-synch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-synch.d && rm  .network-synch.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-synchdisk.o      (../filesys/synchdisk.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-synchdisk.o ../filesys/synchdisk.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../filesys/synchdisk.cc >  .network-synchdisk.d
+cp  .network-synchdisk.d  .network-synchdisk.dd && sed <  .network-synchdisk.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-synchdisk.d && rm  .network-synchdisk.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-synchlist.o      (../threads/synchlist.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-synchlist.o ../threads/synchlist.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/synchlist.cc >  .network-synchlist.d
+cp  .network-synchlist.d  .network-synchlist.dd && sed <  .network-synchlist.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-synchlist.d && rm  .network-synchlist.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-sysdep.o      (../machine/sysdep.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-sysdep.o ../machine/sysdep.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/sysdep.cc >  .network-sysdep.d
+cp  .network-sysdep.d  .network-sysdep.dd && sed <  .network-sysdep.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-sysdep.d && rm  .network-sysdep.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-system.o      (../threads/system.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-system.o ../threads/system.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/system.cc >  .network-system.d
+cp  .network-system.d  .network-system.dd && sed <  .network-system.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-system.d && rm  .network-system.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-thread.o      (../threads/thread.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-thread.o ../threads/thread.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/thread.cc >  .network-thread.d
+cp  .network-thread.d  .network-thread.dd && sed <  .network-thread.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-thread.d && rm  .network-thread.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-threadtest.o      (../threads/threadtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-threadtest.o ../threads/threadtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/threadtest.cc >  .network-threadtest.d
+cp  .network-threadtest.d  .network-threadtest.dd && sed <  .network-threadtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-threadtest.d && rm  .network-threadtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-timer.o      (../machine/timer.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-timer.o ../machine/timer.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/timer.cc >  .network-timer.d
+cp  .network-timer.d  .network-timer.dd && sed <  .network-timer.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-timer.d && rm  .network-timer.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-translate.o      (../machine/translate.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-translate.o ../machine/translate.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../machine/translate.cc >  .network-translate.d
+cp  .network-translate.d  .network-translate.dd && sed <  .network-translate.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-translate.d && rm  .network-translate.dd
+mkdir -p ./
+echo "  [HOST CXX]       network-utility.o      (../threads/utility.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-utility.o ../threads/utility.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/utility.cc >  .network-utility.d
+cp  .network-utility.d  .network-utility.dd && sed <  .network-utility.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-utility.d && rm  .network-utility.dd
+mkdir -p ./
+echo "  [HOST AS]  network-switch.o      (../threads/switch.S)";gcc  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -c  -o network-switch.o ../threads/switch.S
+gcc  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../network -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS -DNETWORK -DTHREADS -DUSER_PROGRAM   -DHOST_i386 -DLINUX -m32 -MM ../threads/switch.S >  .network-switch.d
+cp  .network-switch.d  .network-switch.dd && sed <  .network-switch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .network-switch.d && rm  .network-switch.dd
+echo "  [HOST LINK CXX] nachos-network      (network-addrspace.o network-bitmap.o network-console.o network-directory.o network-disk.o network-exception.o network-filehdr.o network-filesys.o network-fstest.o network-interrupt.o network-list.o network-machine.o network-main.o network-mipssim.o network-nettest.o network-network.o network-openfile.o network-post.o network-progtest.o network-scheduler.o network-stats.o network-synch.o network-synchdisk.o network-synchlist.o network-sysdep.o network-system.o network-thread.o network-threadtest.o network-timer.o network-translate.o network-utility.o network-switch.o)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 network-addrspace.o network-bitmap.o network-console.o network-directory.o network-disk.o network-exception.o network-filehdr.o network-filesys.o network-fstest.o network-interrupt.o network-list.o network-machine.o network-main.o network-mipssim.o network-nettest.o network-network.o network-openfile.o network-post.o network-progtest.o network-scheduler.o network-stats.o network-synch.o network-synchdisk.o network-synchlist.o network-sysdep.o network-system.o network-thread.o network-threadtest.o network-timer.o network-translate.o network-utility.o network-switch.o   -o nachos-network
+mkdir -p ./
+echo "  [HOST CXX]       vm-addrspace.o      (../userprog/addrspace.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-addrspace.o ../userprog/addrspace.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../userprog/addrspace.cc >  .vm-addrspace.d
+cp  .vm-addrspace.d  .vm-addrspace.dd && sed <  .vm-addrspace.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-addrspace.d && rm  .vm-addrspace.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-bitmap.o      (../userprog/bitmap.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-bitmap.o ../userprog/bitmap.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../userprog/bitmap.cc >  .vm-bitmap.d
+cp  .vm-bitmap.d  .vm-bitmap.dd && sed <  .vm-bitmap.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-bitmap.d && rm  .vm-bitmap.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-console.o      (../machine/console.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-console.o ../machine/console.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../machine/console.cc >  .vm-console.d
+cp  .vm-console.d  .vm-console.dd && sed <  .vm-console.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-console.d && rm  .vm-console.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-exception.o      (../userprog/exception.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-exception.o ../userprog/exception.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../userprog/exception.cc >  .vm-exception.d
+cp  .vm-exception.d  .vm-exception.dd && sed <  .vm-exception.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-exception.d && rm  .vm-exception.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-interrupt.o      (../machine/interrupt.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-interrupt.o ../machine/interrupt.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../machine/interrupt.cc >  .vm-interrupt.d
+cp  .vm-interrupt.d  .vm-interrupt.dd && sed <  .vm-interrupt.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-interrupt.d && rm  .vm-interrupt.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-list.o      (../threads/list.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-list.o ../threads/list.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/list.cc >  .vm-list.d
+cp  .vm-list.d  .vm-list.dd && sed <  .vm-list.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-list.d && rm  .vm-list.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-machine.o      (../machine/machine.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-machine.o ../machine/machine.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../machine/machine.cc >  .vm-machine.d
+cp  .vm-machine.d  .vm-machine.dd && sed <  .vm-machine.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-machine.d && rm  .vm-machine.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-main.o      (../threads/main.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-main.o ../threads/main.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/main.cc >  .vm-main.d
+cp  .vm-main.d  .vm-main.dd && sed <  .vm-main.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-main.d && rm  .vm-main.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-mipssim.o      (../machine/mipssim.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-mipssim.o ../machine/mipssim.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../machine/mipssim.cc >  .vm-mipssim.d
+cp  .vm-mipssim.d  .vm-mipssim.dd && sed <  .vm-mipssim.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-mipssim.d && rm  .vm-mipssim.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-progtest.o      (../userprog/progtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-progtest.o ../userprog/progtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../userprog/progtest.cc >  .vm-progtest.d
+cp  .vm-progtest.d  .vm-progtest.dd && sed <  .vm-progtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-progtest.d && rm  .vm-progtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-scheduler.o      (../threads/scheduler.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-scheduler.o ../threads/scheduler.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/scheduler.cc >  .vm-scheduler.d
+cp  .vm-scheduler.d  .vm-scheduler.dd && sed <  .vm-scheduler.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-scheduler.d && rm  .vm-scheduler.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-stats.o      (../machine/stats.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-stats.o ../machine/stats.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../machine/stats.cc >  .vm-stats.d
+cp  .vm-stats.d  .vm-stats.dd && sed <  .vm-stats.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-stats.d && rm  .vm-stats.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-synch.o      (../threads/synch.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-synch.o ../threads/synch.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/synch.cc >  .vm-synch.d
+cp  .vm-synch.d  .vm-synch.dd && sed <  .vm-synch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-synch.d && rm  .vm-synch.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-synchlist.o      (../threads/synchlist.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-synchlist.o ../threads/synchlist.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/synchlist.cc >  .vm-synchlist.d
+cp  .vm-synchlist.d  .vm-synchlist.dd && sed <  .vm-synchlist.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-synchlist.d && rm  .vm-synchlist.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-sysdep.o      (../machine/sysdep.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-sysdep.o ../machine/sysdep.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../machine/sysdep.cc >  .vm-sysdep.d
+cp  .vm-sysdep.d  .vm-sysdep.dd && sed <  .vm-sysdep.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-sysdep.d && rm  .vm-sysdep.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-system.o      (../threads/system.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-system.o ../threads/system.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/system.cc >  .vm-system.d
+cp  .vm-system.d  .vm-system.dd && sed <  .vm-system.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-system.d && rm  .vm-system.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-thread.o      (../threads/thread.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-thread.o ../threads/thread.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/thread.cc >  .vm-thread.d
+cp  .vm-thread.d  .vm-thread.dd && sed <  .vm-thread.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-thread.d && rm  .vm-thread.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-threadtest.o      (../threads/threadtest.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-threadtest.o ../threads/threadtest.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/threadtest.cc >  .vm-threadtest.d
+cp  .vm-threadtest.d  .vm-threadtest.dd && sed <  .vm-threadtest.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-threadtest.d && rm  .vm-threadtest.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-timer.o      (../machine/timer.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-timer.o ../machine/timer.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../machine/timer.cc >  .vm-timer.d
+cp  .vm-timer.d  .vm-timer.dd && sed <  .vm-timer.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-timer.d && rm  .vm-timer.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-translate.o      (../machine/translate.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-translate.o ../machine/translate.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../machine/translate.cc >  .vm-translate.d
+cp  .vm-translate.d  .vm-translate.dd && sed <  .vm-translate.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-translate.d && rm  .vm-translate.dd
+mkdir -p ./
+echo "  [HOST CXX]       vm-utility.o      (../threads/utility.cc)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-utility.o ../threads/utility.cc
+g++ -g  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/utility.cc >  .vm-utility.d
+cp  .vm-utility.d  .vm-utility.dd && sed <  .vm-utility.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-utility.d && rm  .vm-utility.dd
+mkdir -p ./
+echo "  [HOST AS]  vm-switch.o      (../threads/switch.S)";gcc  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -c  -o vm-switch.o ../threads/switch.S
+gcc  -Wall -Wshadow -Werror  -DCHANGED -I../bin -I../filesys -I../machine -I../threads -I../userprog  -DFILESYS_NEEDED -DFILESYS_STUB -DUSER_PROGRAM -DUSE_TLB   -DHOST_i386 -DLINUX -m32 -MM ../threads/switch.S >  .vm-switch.d
+cp  .vm-switch.d  .vm-switch.dd && sed <  .vm-switch.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .vm-switch.d && rm  .vm-switch.dd
+echo "  [HOST LINK CXX] nachos-vm      (vm-addrspace.o vm-bitmap.o vm-console.o vm-exception.o vm-interrupt.o vm-list.o vm-machine.o vm-main.o vm-mipssim.o vm-progtest.o vm-scheduler.o vm-stats.o vm-synch.o vm-synchlist.o vm-sysdep.o vm-system.o vm-thread.o vm-threadtest.o vm-timer.o vm-translate.o vm-utility.o vm-switch.o)";g++ -g  -Wall -Wshadow -Werror  -DCHANGED  -m32 vm-addrspace.o vm-bitmap.o vm-console.o vm-exception.o vm-interrupt.o vm-list.o vm-machine.o vm-main.o vm-mipssim.o vm-progtest.o vm-scheduler.o vm-stats.o vm-synch.o vm-synchlist.o vm-sysdep.o vm-system.o vm-thread.o vm-threadtest.o vm-timer.o vm-translate.o vm-utility.o vm-switch.o   -o nachos-vm
+mkdir -p ./
+echo "  [MIPS CC] halt.o      (../test/halt.c)";/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o halt.o ../test/halt.c
+/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -MM ../test/halt.c >  .halt.d
+cp  .halt.d  .halt.dd && sed <  .halt.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .halt.d && rm  .halt.dd
+mkdir -p ./
+echo "  [MIPS AS]  start.o      (../test/start.S)";/usr/bin/mipsel-linux-gnu-gcc -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o start.o ../test/start.S
+/usr/bin/mipsel-linux-gnu-gcc -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -MM ../test/start.S >  .start.d
+cp  .start.d  .start.dd && sed <  .start.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .start.d && rm  .start.dd
+make -C ../bin TARGET=HOST coff2noff
+make[2]: Entering directory '/media/sf_prj/src/nachos/code/bin'
+mkdir -p ./
+echo "  [HOST CC] coff2noff.o      (coff2noff.c)";gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine -m32 -c  -o coff2noff.o coff2noff.c
+gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine -m32 -MM coff2noff.c >  .coff2noff.d
+cp  .coff2noff.d  .coff2noff.dd && sed <  .coff2noff.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .coff2noff.d && rm  .coff2noff.dd
+echo "  [HOST LINK CXX] coff2noff      (coff2noff.o)";gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine  -m32 coff2noff.o   -o coff2noff
+# LDLIBS & LOADLIBES are predefined variables 
+# LDLIBS: Library flags or names given to compilers when they are supposed to invoke the linker, ld.
+# LOADLIBES is a deprecated (but still supported) alternative to LDLIBS
+# @echo "  [HOST LINK CXX] coff2noff      (coff2noff.o)";gcc -g  -Wall -Wshadow -Werror  -I../bin -I../threads -I../filesys -I../machine  -m32 coff2noff.o   -o coff2noff
+make[2]: Leaving directory '/media/sf_prj/src/nachos/code/bin'
+echo "  [MIPS PRELINK CC]   halt.coff      (halt.o start.o ../test/script)";/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,elf32-tradlittlemips  start.o halt.o   -o halt.coff
+echo "  [MIPS LINK CC]   halt.coff      (halt.o start.o ../test/script)";/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,ecoff-littlemips  start.o halt.o   -o halt.coff
+echo "  [NACHOS RELINK]      halt      (halt.coff)"; >/dev/null ../bin/coff2noff halt.coff halt && chmod +x halt
+mkdir -p ./
+echo "  [MIPS CC] matmult.o      (../test/matmult.c)";/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o matmult.o ../test/matmult.c
+/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -MM ../test/matmult.c >  .matmult.d
+cp  .matmult.d  .matmult.dd && sed <  .matmult.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .matmult.d && rm  .matmult.dd
+echo "  [MIPS PRELINK CC]   matmult.coff      (matmult.o start.o ../test/script)";/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,elf32-tradlittlemips  start.o matmult.o   -o matmult.coff
+echo "  [MIPS LINK CC]   matmult.coff      (matmult.o start.o ../test/script)";/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,ecoff-littlemips  start.o matmult.o   -o matmult.coff
+echo "  [NACHOS RELINK]      matmult      (matmult.coff)"; >/dev/null ../bin/coff2noff matmult.coff matmult && chmod +x matmult
+mkdir -p ./
+echo "  [MIPS CC] shell.o      (../test/shell.c)";/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o shell.o ../test/shell.c
+/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -MM ../test/shell.c >  .shell.d
+cp  .shell.d  .shell.dd && sed <  .shell.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .shell.d && rm  .shell.dd
+echo "  [MIPS PRELINK CC]   shell.coff      (shell.o start.o ../test/script)";/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,elf32-tradlittlemips  start.o shell.o   -o shell.coff
+echo "  [MIPS LINK CC]   shell.coff      (shell.o start.o ../test/script)";/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,ecoff-littlemips  start.o shell.o   -o shell.coff
+echo "  [NACHOS RELINK]      shell      (shell.coff)"; >/dev/null ../bin/coff2noff shell.coff shell && chmod +x shell
+mkdir -p ./
+echo "  [MIPS CC] sort.o      (../test/sort.c)";/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -c  -o sort.o ../test/sort.c
+/usr/bin/mipsel-linux-gnu-gcc -g -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -DIN_USER_MODE -Wall -Wall -Wshadow -Werror -nostdinc -DCHANGED  -I../threads -I../userprog  -MM ../test/sort.c >  .sort.d
+cp  .sort.d  .sort.dd && sed <  .sort.dd -e 's/^.*://' -e 's/\([^\\]\)$/\1:/' >>  .sort.d && rm  .sort.dd
+echo "  [MIPS PRELINK CC]   sort.coff      (sort.o start.o ../test/script)";/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,elf32-tradlittlemips  start.o sort.o   -o sort.coff
+echo "  [MIPS LINK CC]   sort.coff      (sort.o start.o ../test/script)";/usr/bin/mipsel-linux-gnu-gcc -nostdlib -mips1 -mfp32 -mno-abicalls --no-pie -no-pie -fno-builtin -fno-stack-protector -G 0 -Wl,-T,../test/script -Wl,-N  -Wl,-b,ecoff-littlemips  start.o sort.o   -o sort.coff
+echo "  [NACHOS RELINK]      sort      (sort.coff)"; >/dev/null ../bin/coff2noff sort.coff sort && chmod +x sort
+rm halt.coff shell.coff matmult.coff sort.coff
+make[1]: Leaving directory '/media/sf_prj/src/nachos/code/build'
+# go to things under bin:... first and do them and then do: 
+# make -C build -> execute make in build using the make file there
+csk@mknachos:/media/sf_prj/src/nachos/code$ 
