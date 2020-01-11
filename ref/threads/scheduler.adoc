@@ -1,0 +1,85 @@
+= Scheduler
+
+== Attr
+readList -> queue of threads in ready state
+
+
+== Methods
+
+Scheduler()::
+* create a readyList
+
+~Scheduler()::
+* delete the readyList
+
+void ReadyToRun (Thread * thread)::
+* set thread status to ready
+* append (add it to back) to ready queue
+
+Thread * FindNextToRun ()::
+* a ready thread is removed from the front of ready queue
+
+void Print ()::
+* print name of all threads in ready queue
+
+void Run (Thread * nextThread)::
++
+[NOTE]
+====
+To prempt current thread and run new thread
+====
+* Assertion:
++
+[WARNING]
+====
+Interrupt should be off
+====
+* On __USER_PROGRAM__:
+** If currentThread is a user space program:
+*** Save user mode CPU registers
++
+[NOTE]
+====
+a user program thread has *two* sets of CPU registers: 
+
+* for state while executing user code, 
+* for state while executing kernel code.
+
+Here whatever is saved is user code CPU registers
+====
+*** Save user mode address space state
++
+[NOTE]
+====
+This need not be just register information, it can be anything
+====
+* Abort if there's stack overflow of current thread
+* set new thread status as Running
+* do switch from old thread to new thread(refer SWITCH in threads/switch)
++
+[NOTE]
+====
+Inside switch when return instruction is called, *Finish* is executed for the old thread? need to check this point. If this is the case, then it causes:
+
+* old thread set to *threadToBeDestroyed*
+* calls *sleep*:
+** run method is called
+====
+
+* do cleanup if there's a threadToBeDestroyed
++
+[IMPORTANT]
+====
+This cleanup action is in 2 places in code:
+
+* setting up new thread
+* after switch in this api
+
+We need to understand what are the cases that will cause old thread to be cleaned up here or there.
+====
+
+* On USER_PROGRAM:
+** If currentThread is a user space program:
+
+*** Restore user mode CPU registers
+*** Restore user mode address space state

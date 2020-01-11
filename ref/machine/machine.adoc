@@ -1,4 +1,63 @@
-= Members
+= machine
+
+
+== Attr
+* main memory(store user program: coe and data)
+* registers(CPU registers)
+* TLB
+* page table
+
+== Methods
+
+static void CheckEndian()::
+* Assertion
++
+[WARNING]
+====
+Code should be compiled with same endianess as host 
+====
+
+Machine(bool debug)::
+* Initialize:
+** registers
+** main memory
+** TLB(is used i,e, on __USE_TLB__)
+** debug options
+* Check Endianess
+
+~Machine()::
+* delete main memory
+* delete TLB is initialized
+
+void RaiseException(ExceptionType which, int badVAddr)::
+* store virtual address that caused the exception
++
+[NOTE]
+====
+This could be needed to retry the instruction after execption is handled, for example like in page fault
+====
+* Complete any on-going stuff
+* set system to kernel mode
+* Call execption handler by passing the 'which' of the exeception
+* set system back to user mode
+
+void Debugger()::
+* interrupt dumpstate
+* machine dumpstate
+* print totalTicks
+* execute actions related to character entered on console:
+** <return>: execute one instruction
+** <number>: until timerTick = <number>
+** c: until completion
+** ?: print the help options
+
+
+void DumpState()::
+* prints out:
+** machine registers:
+*** GPR
+*** stack
+*** ret address reg
 
 int ReadRegister(int num)::
 * Assertion:

@@ -173,7 +173,13 @@ void Finish ()::
 * This function should be called by current thread
 * All previously finished threads are destroyed
 ====
-* mark current thread as the thread to be destroyed(so that in new thread's SetupThreadState method this can be cleaned up)
+* mark current thread as the thread to be destroyed
++
+[NOTE]
+====
+Current thread is not deleted right away coz until a new thread is run, everything is running on current thread's stack.
+Once new thread is run, in new thread's SetupThreadState method this old thread be cleaned up)
+====
 * *Sleep*(thread->Sleep() not unix syscall sleep)
 
 void Sleep ()::
