@@ -1,11 +1,20 @@
 = machine
 
-
 == Attr
 * main memory(store user program: coe and data)
 * registers(CPU registers)
 * TLB
 * page table
++
+[IMPORTANT]
+====
+At any given execution of the program, one of the 2: TLB or linear page table can be used by kernel.
+If TLB is used, linear page table cannot used and vice versa.
+This choice is made via macro __USE_TLB__
+
+In real system, dont we have both???
+Page table and TLB both will be in MMU, right?
+====
 
 == Methods
 

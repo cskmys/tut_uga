@@ -1,0 +1,64 @@
+= mipssim
+
+several methods belonging to machine class though defined in machine.h are implemented across multiple files.
+
+void Run()::
+* set system mode to user mode
+* infinite loop
+** Run one instruction in code segment
++
+[NOTE]
+====
+This is where the core of MIPS simulator lies. Here whole of MIPS RISC instruction set is emulated.
+====
+** Tick management
++
+[NOTE]
+====
+Since user programs are run as user-level threads(from linux machine point of view), linux is not aware of existence of them. Hence, GDB cannot be used to debug user-level programs but there's a simple debugger written in machine class that can be enabled via command line options.
+That debugger's actions are performed in here in this infinite loop.
+====
+
+void DelayedLoad(int nextReg, int nextValue)::
+* Make sure that whatever value is pending to be written into the target register, is written.
++
+[NOTE]
+====
+The instruction used for above is:
+----
+registers[registers[LoadReg]] = registers[LoadValueReg];
+----
+It is like dereferencing a pointer meaning:
+
+register[LoadReg] contains the destination index for data and registers[LoadValueReg] contains the value to loaded at the destination.
+
+Hence, above instruction is effectively:
+----
+registers[destination index] = value
+----
+====
+* load values into load register and load value register
+
+void OneInstruction(Instruction *instr)::
+* Get instruction to be executed(refer ReadMem in machine/translate for whole cycle)
++
+[NOTE]
+====
+Address of Current instruction to be executed is given by PC. This address will be virtual address in code segment in current address space. Hence, translation is needed.
+====
+* If reading code segment was not success:
+** return
+* Decode the raw 4 bytes into an instruction
+* Execute the instruction
+** Opcode of instruction is that of Syscall:
+*** Raise syscall Exception
+* Execute DelayedLoad to finish any pending memory writes and to load next register and value into the machine registers
+* Update program counters:
+** prev PC = current PC
++
+[NOTE]
+====
+Normally this is not tracked. Here it's tracked to act as a crude/minimal call stack during debugging MIPS simulator
+====
+** current PC = next PC
+** next PC = PC after

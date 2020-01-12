@@ -1,0 +1,19 @@
+= exception
+
+static void UpdatePC ()::
+* read the PC register and write it to PrevPC register
+* read the NextPC register and write it to PC register
+* increment PC by 4 to get the next instruction and write it to NextPC register
+
+void ExceptionHandler (ExceptionType which)::
+* read register no. 2
++
+[NOTE]
+====
+the type of syscall i,e, syscall number is in register 2 
+====
+* If its a Syscall Exception and system call is Halt:
+** interrupt->Halt
+* else:
+** Abort
+* UpdatePC

@@ -52,6 +52,14 @@ Because of this instruction, even though you come into switch from a thread, you
 
 == i386 proc
 
+The routines below execute when the threads are created/switched at the nachos level not at the user program level on MIPS simulator.
++
+[NOTE]
+====
+If all the thread actions(including creating and switching) are explicitly managed by the code at nachos level(not mips sim level), then from host linux point of view are'nt the nachos threads  user level threads? 
+====
+
+
 void ThreadRoot(void)::
 +
 [NOTE]

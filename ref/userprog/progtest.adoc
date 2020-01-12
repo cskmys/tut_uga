@@ -1,0 +1,15 @@
+= progtest
+
+void StartProcess (char *filename)::
+* open the executable
+* create an address space(refer userprog/addrspace)
+* mark this address space as current thread's space
+* close the executable
++
+[NOTE]
+====
+doing delete will call destructor which closes the file.
+====
+* initialize the registers of user mode
+* load the page table entries of address space to machine
+* run the program in the machine

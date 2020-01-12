@@ -1,0 +1,117 @@
+= translate
+
+== TranslationEntry
+This represents one entry in page table in user address space or TLB.
+
+* Virtual page number
+* Physical page number
+* page validity: is a page used or not
+* read only
+* use: recently used or not(set by hardware)
+* dirty: whether page in ram and secondary memory in sync or not
+
+= Methods
+
+ExceptionType Translate(int virtAddr, int* physAddr, int size, bool writing)::
+* If there are alignment errors return *AdressErrorException*
++
+[NOTE]
+====
+If memory is aligned well:
+
+----
+   0     1     2     3
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+   4     5     6     7
+----
+accessing 2 bytes should start at addresses which are multiples of 2 i,e, addr % 2 = 0 or addr & 1 != 1
+
+accessing 4 bytes should start at addresses which are multiples of 4 i,e, addr % 4 = 0 or addr & 3 == 0
+
+accessing 1 byte can start on any addresses.
+====
+
+* Assertion:
++
+[WARNING]
+====
+There must either of the 2: TLB or Page table, but not both
+====
+
+* Get virtual page number and offset:
++
+----
+VPgNo = VAddr / PageSiz
+VOff = VAddr % PageSiz
+----
+
+* If Linear page table is used(there's no TLB):
+** If Virtual page number >= No of virtual pages
+*** return *AddressErrorException*
+** else if Virtual Page is marked not valid(Valid flag in Page Table entry)
+*** return *PageFaultExcecption*
+** Entry = Page Table[virtual page no]
++
+[NOTE]
+====
+Since it's a linear table, the value to be searched is present at it's index i,e, details of virtual page 3 is at index 3 in the table.
+====
+* else(TLB is used):
+** do linear search in TLB for the entry with virtual page no as the key.
+*** If found and valid:
+**** Entry = TLB[x]
++
+[NOTE]
+====
+Unlike page table, TLB is not a linear table. Hence, you'll need to search for the entry in TLB by doing linear search i,e, we dont know at which index in TLB the desired entry could reside.  
+====
+*** else:
+**** return *PageFaultException*
+
+* If there's no read access and operation to be performed was write:
+** return *ReadOnlyException*
+
+* Get Physical Page no from entry
+* If physical page number >= no of physical page numbers:
+** return *BusErrorException*
+* Set Use flag in entry
+* If write operation:
+** Set Dirty flag in entry 
+* Compute Physical address:
++
+----
+Physical Addr = Physical Page number * Physical Page SIze + Offset
+----
+* Assertion
++
+[WARNING]
+====
+Phyical Address is valid i,e, in range of [0, MemorySize]
+
+Memory Size = No of physical pages * physical page size
+====
+* return *NoException*
+
+bool ReadMem(int addr, int size, int *value)::
+
+* Translate the virtual address to physical address
+* If there was an exception:
+** RaiseException handler
+** return False
+* Assertion:
++
+[WARNING]
+====
+Number of bytes(size) to be read is valid(1, 2, or 4)
+====
+* Read the desired number of bytes from the mainMemory using the physicalAddress(read into *value).
++
+[NOTE]
+====
+Here both real machine x86_64 or i386 and the virtual machine MIPS are having the same endiannes, hence for read and write from/to main memory, we need not be concerned about swapping bytes 
+====
+* return True

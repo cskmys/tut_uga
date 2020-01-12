@@ -59,14 +59,15 @@ This need not be just register information, it can be anything
 +
 [NOTE]
 ====
-Inside switch when return instruction is called, *Finish* is executed for the old thread? need to check this point. If this is the case, then it causes:
-
-* old thread set to *threadToBeDestroyed*
-* calls *sleep*:
-** run method is called
+When CPU is given up voluntarily using yield or when a thread finishes, in both cases if there's another thread to run, SWITCH is called
 ====
 
 * do cleanup if there's a threadToBeDestroyed
++
+[NOTE]
+====
+If CPU is given up voluntarily via yield no thread is set as threadToBeDestroyed 
+====
 +
 [IMPORTANT]
 ====

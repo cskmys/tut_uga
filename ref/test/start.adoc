@@ -1,0 +1,32 @@
+= start
+
+This code is in assembly(.S file)
+
+Any user program that's compiled is linked with this .S file
+
+This contains the startup code that calls jump to main function in user program.
+
+This file contains all the assembly code to raise a syscall exception on the MIPS simulator from the user program.
+
+Whenever a 'syscall' is made from user program, the code in this file is run.
+
+Refer test/halt for more information
+
+Currently the available syscalls to user programs are:
+
+* Halt
+* Exit
+* Exec
+* Join
+* Create
+* Open
+* Read
+* Write
+* Close
+* Fork
+* Yield
+
+[WARNING]
+====
+As of now only Halt is implemented. Calling any other syscall with cause nachos to abort.
+====

@@ -1,0 +1,24 @@
+= noff
+
+Nachos Object(user space program executable) File Format
+
+The code compiled from mipsel cross compiler is of the form coff. This format has to be converted into noff since our simulator understand this simpler format.
+
+You can see this conversion command being run in make/make_command_summary
+
+== segment
+It's struct(i,e, all member public) used to define where a segment resides in file in virtual address space
+
+* address of file in virtual memory
+* address of segment in the file
+* size of segment
+
+== noffHeader
+It's struct used to define the header of the executable
+
+* Magic number 0xbadfad is used as the header identifier. If this number is not there are at the begining of the file, then it's not a valid user program executable file.
+* code segment: where user space program code goes
+* initialized data segment: static and global data initialized in user space program goes here
+* uninitialized data segment: static and global data uninitialized in user space program goes here
+
+Executable file/programmer writing program in user space doesn't make any decision about stack/heap i,e, it's all taken care by the os. Hence, here only the data that lives throughout the lifetime of the program is considered.

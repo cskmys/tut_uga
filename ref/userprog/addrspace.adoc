@@ -1,0 +1,96 @@
+= Addrspace
+
+Any program requires memory to store its code, and data. For the user programs in nachos, which runs on the MIPS simulator, this class manages the address space.
+
+== Attr
+* page table entries
+* number of pages in virtual addr space
+
+
+== Methods
+
+AddrSpace (OpenFile * executable)::
+* Read the exec file header
++
+[NOTE]
+====
+i386 and MIPS both have same endianness. 
+This means, any raw byte(for example executable file) exchange between the two will be in the same byte order. 
+Therefore there's no need to swap bytes while reading contents of the file.
+
+Hence, all the code written to swap header can be ignored.
+====
+* Assertion:
++
+[WARNING]
+====
+magic number should be present in the header of the executable file.
+====
+* Compute the size of address space required to run the executable as a process in user space
++
+----
+Addr Space = Code + InitData + UninitData + User Stack Size
+----
++
+[NOTE]
+====
+User stack size = 1024, MACRO in userprog/addrspace.h
+====
++
+[WARNING]
+====
+Not very clear where heap for user program goes. In a very simplistic model, the stack and heap reside in same segment at extreme ends and both grow in opposite directions toward one another.
+====
+
+* Compute the number of pages(physical) required to allocate the memory for address space
++
+[NOTE]
+====
+For alignment and to reduce fragmentation, we try to allocate memory in terms of physical pages rather than exact bytes.
+====
+* Assertion
++
+[WARNING]
+====
+Number of pages required should not be more than total number of physical pages(= 32, macro in machine/machine.h)
+====
+* Create new page table entry and initialize it:
+** For now virtual page number = physical page number, as we progress, this will change.
+** valid = TRUE
+** use = TRUE
+** dirty = FALSE
+** readonly = FALSE
+* Clear the machine memory, where the address space will reside.
+* Copy the code and initialized data segment from executable to machine's main memory at the respective virtual address
++
+[NOTE]
+====
+Write now virtual = physical addr, so not a problem. In future read api should be modified to translate the addresses. That will ensure using the virtual address here along with the read api to copy will copy segments to proper regions/pages in physical memory. 
+====
+
+
+~AddrSpace ()::
+delete page table entries
+
+
+void InitRegisters ()::
+* all 40 user program registers of the machine = 0
+* PC of the machine = 0, in order to execute the start of the user space program next
+* initialize next PC register = 4
++
+[NOTE]
+====
+Weird why next PC is required.
+====
+* user prog Stack register = n-5th place in the address space(consider address space as array of bytes from 0 -> n-1. Last 4 ints i,e, 16 bytes in this array is left to be 'safe'.)
+
+void SaveState ()::
++
+[NOTE]
+====
+nothing as of now, needs to be decided in the future
+====
+
+void RestoreState ()::
+* restore machine's page table entries for executing user program in this address space.
+* restore machine's page table size for executing user program in this address space.

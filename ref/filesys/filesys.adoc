@@ -1,0 +1,16 @@
+= Filesys
+
+Here there's stub(on __FILESYS_STUB__) for file system which uses host linux's syscalls. This stub can be used until an actual file system is built on nachos.
+
+== on __FILESYS_STUB__
+FileSystem(bool format)::
+* Nothing
+
+bool Create(const char *name, int initialSize)::
+* Open for write and close the file using unix calls
+
+OpenFile* Open(char *name)::
+* Open if file exists, if not create and open one using unix calls
+
+bool Remove(char *name)::
+* unix call: Unlink(name) used to delete a file
