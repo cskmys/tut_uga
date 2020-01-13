@@ -59,7 +59,9 @@ This need not be just register information, it can be anything
 +
 [NOTE]
 ====
-When CPU is given up voluntarily using yield or when a thread finishes, in both cases if there's another thread to run, SWITCH is called
+When CPU is given up voluntarily using yield or when a thread finishes, in both cases if there's another thread to run, SWITCH is called.
+
+As of now, OS cannot intervene and switch a thread, it relies on threads to behave gracefully and give up CPU voluntarily. In other words, it's co-operative model not pre-emptive.
 ====
 
 * do cleanup if there's a threadToBeDestroyed
