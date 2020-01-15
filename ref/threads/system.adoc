@@ -4,6 +4,29 @@ void Initialize (int argc, char **argv)::
 * create objects:
 ** stats <- Statistics() (stats.cc in machine)
 ** interrupt <- Interrupt() (interrupt.cc in machine)
+** scheduler
+** timer
+** thread
+* set thread status to Running
+* enable interrupt
+* Set *Cleanup* as user abort handler
++
+[NOTE]
+====
+Whenever user presses ctrl-c on shell, *SIGINT* signal is sent to the program, using linux apis we can register an handler which will be triggered on this signal to do the needful.
+====
+* create objects:
++
+.Object and their conditional compilation flag
+[width="100%",options="header"]
+|====================
+| Object name | Macro required to compile
+| machine, synchconsole | __USER_PROGRAM__ 
+| synchDisk | __FILESYS__ 
+| fileSystem | __FILESYS_NEEDED__
+| postOffice | __NETWORK__
+|====================
+
 
 void Cleanup()::
 * delete the following objects if they are declared during conditional compilation
